@@ -1,0 +1,15 @@
+import { TextareaHTMLAttributes } from "react";
+
+type Props = TextareaHTMLAttributes<HTMLTextAreaElement>;
+
+export default function Textarea({
+  className = "",
+  ...props
+}: Props) {
+  return (
+    <textarea
+      className={`diary-textarea ${className}`}
+      {...props}
+    />
+  );
+}
