@@ -29,13 +29,13 @@ export default function LoginPage() {
     const data = await res.json();
 
     if (data.success) {
-      router.push("/dashboard");
+      router.push("/profile");
     } else {
       alert(data.message);
     }
 }
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4">
+    <div className="flex items-center justify-center bg-background px-4">
 
         <div className="diary-card w-full max-w-md p-8 border border-gray-200 rounded-2xl shadow-sm">
           <h2 className="text-2xl font-semibold text-primary mb-6">

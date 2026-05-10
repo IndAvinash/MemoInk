@@ -28,7 +28,7 @@ import {
 const navItems = [
   {
     name: "Home",
-    href: "/",
+    href: "/?status=0",
     icon: Home,
   },
   {
@@ -69,7 +69,7 @@ export default function RootLayout({
           {/* Sidebar */}
           <aside
             className={`
-              hidden md:flex flex-col
+              hidden lg:flex flex-col
               bg-white border-r border-gray-200 shadow-sm
               transition-all duration-300 ease-in-out
               ${collapsed ? "w-24" : "w-72"}
@@ -193,7 +193,36 @@ export default function RootLayout({
               </div>
             </div>
           </aside>
+                 <nav className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white border-t border-gray-200 shadow-md">
+    <div className="flex items-center justify-around py-2">
+      {navItems.map((item) => {
+        const Icon = item.icon;
+        const isActive = pathname === item.href;
 
+        return (
+          <Link
+            key={item.name}
+            href={item.href}
+            className={`
+              flex flex-col items-center justify-center
+              px-3 py-2 rounded-xl transition
+              ${
+                isActive
+                  ? "text-[#5c3d2e]"
+                  : "text-gray-500 hover:text-[#5c3d2e]"
+              }
+            `}
+          >
+            <Icon size={22} />
+
+            <span className="text-xs mt-1">
+              {item.name}
+            </span>
+          </Link>
+        );
+      })}
+    </div>
+  </nav>
           {/* Main Content */}
           <div className="flex-1 flex flex-col">
             {/* Mobile Header */}
