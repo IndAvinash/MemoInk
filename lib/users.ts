@@ -7,6 +7,7 @@ export async function getUserFromToken(token: string) {
   try {
     const decoded = jwt.verify(token, SECRET) as JwtPayload;
     const email = decoded.email;
+    console.log("Decoded token email:", email);
     const client = await clientPromise;
     const db = client.db();
     const existingUser = await db
