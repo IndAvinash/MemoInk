@@ -1,5 +1,5 @@
 import clientPromise from "./databse";
-
+import { DiaryEntry } from "@/types/entry";
 
 export async function entriesOfUser(username: string) {
   const client = await clientPromise;

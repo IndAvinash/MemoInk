@@ -1,16 +1,19 @@
 ﻿"use client";
 import Card from "@/components/ui/card";
+import { useRouter } from "next/navigation";
 import { use, useEffect, useState } from "react";
+import WritePage from "../write/page";
 
 
 
 
 
 export default function DiaryPage() {
-  // const entrys = use(fetchEntries());
+  const router = useRouter();
   const [lists, setLists] = useState<any[]>([]);
   const[left, setLeft] = useState<any[]>([]);
   const[right, setRight] = useState<any[]>([]);
+  const[id,setId] = useState<string|null>(null)
    useEffect(() => {
     const fetchData = async () => {
 try {
@@ -55,6 +58,13 @@ try {
     setRight(rightEntries);
   }
 }, [lists]); 
+
+const popUp=(id:string)=>{
+  setId(id);
+}
+if(id){
+  return (<WritePage id={id}/>)
+}
   return (
     <div className="space-y-8 py-8">
         <h1 className="text-4xl font-bold text-[#5c3d2e]">
@@ -67,9 +77,12 @@ try {
             
           left.map((entr, index) => (
             
-            <Card key={entr._id} className="p-4 w-full min-h-[50vh] min-w-62.5 max-h-[120vh]">
+            <Card key={entr._id} className="p-4 w-full min-h-[50vh] min-w-62.5 max-h-[120vh]" onDoubleClick={()=>popUp(entr.id)} >
               <h2 className="text-xl text-center font-semibold mb-2">{entr.title}</h2>
-              <p className="text-gray-700 line-clamp-20 ">{entr.content}</p>
+              <div className="text-gray-700 line-clamp-20 "
+              dangerouslySetInnerHTML={{
+        __html: entr.content,
+      }}/>
             </Card>
           ))}
           </div>
@@ -79,9 +92,12 @@ try {
             
          right.map((entr, index) => (
             
-            <Card key={entr._id} className="p-4 w-full min-h-[50vh] min-w-62.5 max-h-[120vh]">
+            <Card key={entr._id} className="p-4 w-full min-h-[50vh] min-w-62.5 max-h-[120vh]" onDoubleClick={()=>popUp(entr.id)}>
               <h2 className="text-xl text-center font-semibold mb-2">{entr.title}</h2>
-              <p className="text-gray-700 line-clamp-20 ">{entr.content}</p>
+              <div className="text-gray-700 line-clamp-20 "
+              dangerouslySetInnerHTML={{
+        __html: entr.content,
+      }}/>
             </Card>
           ))}
           </div>
@@ -90,4 +106,16 @@ try {
       </div>
   );
 }
+
+// function Diary(){
+  
+//   const[isView,setIsView] = useState(false);
+//   if(isView){
+//  return (<WritePage id=""></WritePage>)
+//   }
+//   return(
+//     <DiaryPage/>
+//   )
+  
+// }
    

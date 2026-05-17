@@ -20,6 +20,9 @@ export default function Button({
       "bg-secondary text-foreground hover:bg-border border border-border",
     ghost:
       "bg-transparent hover:bg-secondary text-foreground",
+      destructive:
+          "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
+        
   };
 
   return (

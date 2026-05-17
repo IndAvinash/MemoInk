@@ -1,8 +1,7 @@
 import jwt, { JwtPayload } from "jsonwebtoken";
 import clientPromise from "@/lib/databse";
 import { UserModel } from "@/types/user";
-const SECRET = process.env.JWT_SECRET!;
-
+const SECRET = process.env.JWT_SECRET;
 export async function getUserFromToken(token: string) {
   try {
     const decoded = jwt.verify(token, SECRET) as JwtPayload;

@@ -1,4 +1,4 @@
-export default function WritePage() {
+export default function WritePage({id}:{id?:string}) {
   return (
     <div className="space-y-4">
       <h1 className="text-4xl font-bold text-[#5c3d2e]">

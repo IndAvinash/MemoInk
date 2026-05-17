@@ -1,10 +1,10 @@
-interface DiaryEntry {
-    id: number;
-    user: string;
+export interface DiaryEntry {
+    id: string;
+    username: string;
     title: string;
     content: string;
-    for:[Date,Date]; // [start_date, end_date]
-    created_at: Date;
+    for?:[Date,Date]; // [start_date, end_date]
+    created_at?: Date;
     media?:[
         photos?:[
             photo:{

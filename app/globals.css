@@ -16,6 +16,7 @@
   --card: #ffffff;
   --muted: #6b7280;
   --border: #e5e7eb;
+   --destructive: oklch(0.577 0.245 27.325);
 
   --accent: #c08b5c;
 }
@@ -32,6 +33,8 @@
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-accent: var(--accent);
+  
+  --color-destructive: var(--destructive);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -111,6 +114,12 @@ body {
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease-out;
   }
+  .write-toolbar{
+    @apply flex justify-center items-center space-x-4 mb-4;
+  }
+  .write-toolbar-button{
+    @apply w-6 h-6 rounded-xs hover:bg-gray-400;
+}
 }
 
 
@@ -125,4 +134,5 @@ body {
     color: var(--primary);
     margin-bottom: 1rem;
   }
- 
+/* Diary Writing */
+
